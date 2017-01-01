@@ -14,7 +14,7 @@ io.on('connection', function(socket) {
 	console.log('User connected via socket.io!');
 
 	socket.on('message', function (message) {
-		console.log('Message received: ' + mesage.text);
+		console.log('Message received: ' + message.text);
 		// broadcast to everyone connected except for ourselves
 		socket.broadcast.emit ('message', message);
 	});
