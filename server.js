@@ -11,12 +11,14 @@ app.use(express.static(__dirname + '/public'));
 // connection is the event
 // when you get the connection event, call this function
 io.on('connection', function(socket) {
-	console.log('User connected via socket.io!');
+	console.log('User connected via socket.io');
 
 	socket.on('message', function (message) {
 		console.log('Message received: ' + message.text);
 		// broadcast to everyone connected except for ourselves
-		socket.broadcast.emit ('message', message);
+		//socket.broadcast.emit ('message', message);
+		// broadcast to everyone including ourselves
+		io.emit ('message', message);
 	});
 
 	socket.emit('message', {

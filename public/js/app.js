@@ -9,6 +9,10 @@ socket.on('connect', function () {
 socket.on('message', function (message) {
 	console.log('New message:');
 	console.log(message.text);
+
+	// select the css class messages
+	// append method - add to the end
+	jQuery('.messages').append('<p>' + message.text + '</p>');
 })
 
 // Handles submitting of new message
